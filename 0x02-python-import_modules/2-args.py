@@ -1,18 +1,16 @@
 #!/usr/bin/python3
-def arg_line(av):
-    number = max(0, len(av) - 1)
-    number = len(av) - 1
-    if number == 0:
-        print("0 arguments.")
-    elif number == 1:
-        print("1 argument:")
-    else:
-        print("{:d} arguments:".format(number))
-    i = 1
-    while i <= number:
-        print("{:d}: {}".format(i, av[i]))
-        i += 1
-
 if __name__ == "__main__":
     import sys
-    arg_line(sys.argv)
+
+    arg_line = sys.argv
+    line_size = len(arg_line) - 1
+
+    if line_size == 0:
+        print("{} arguments".format(line_size))
+    elif line_size > 1:
+        print("{} arguments:".format(line_size))
+        for i in range(1, line_size + 1):
+            print("{}: {}".format(i, arg_line[i]))
+    else:
+        print("{} argument:".format(line_size))
+        print("{}: {}".format(1, arg_line[1]))
