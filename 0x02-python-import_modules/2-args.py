@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 def arg_line(av):
+    number = max(0, len(av) - 1)
     number = len(av) - 1
     if number == 0:
         print("0 arguments.")
