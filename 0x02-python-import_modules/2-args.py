@@ -3,7 +3,6 @@ if __name__ == "__main__":
     import sys
     arg_line = sys.argv
     line_size = len(arg_line) - 1
-
     if line_size > 1:
         print("{} arguments:".format(line_size))
         for i in range(1, line_size + 1):
