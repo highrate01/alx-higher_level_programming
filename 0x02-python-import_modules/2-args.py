@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
     import sys
-
     arg_line = sys.argv
     line_size = len(arg_line) - 1
 
