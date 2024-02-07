@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Define a class square"""
 
 
@@ -19,7 +18,8 @@ class Square:
     def size(self):
         """Get/set the current size of the
         square"""
-        return (self.__size)
+        return self.__size
+
     @size.setter
     def size(self, value):
         if not isinstance(value, int):
@@ -30,4 +30,4 @@ class Square:
 
     def area(self):
         """Return the current area of the square"""
-        return (self.__size * self.__size)
+        return self.__size * self.__size
