@@ -1,0 +1,24 @@
+=====How to use 0-add_integer.py =====
+
+Ihis module defines an addition function,
+def add_integer(a, b=98).
+
+===usage:
+The function returns the result of its two arguments when the addition operation is performed
+by using the '+' operator.
+::
+	 def add_integer(3, 4) = 3 + 4 = 7
+::
+	def add_integer(-2, 4) = 2
+
+	The function also work with floating point numbers
+::
+	def add_integer(3.0 + 4.00) = 7
+
+	Note that the float are casted int integer before the
+	addition is performed
+::
+	floating are non-floating can be combined
+::
+	The values must be ineger or floating
+	else TypError will be raised
