@@ -2,6 +2,7 @@
 """Defines a class Rectangle than inherite from BaseGeometry."""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+
 class Rectangle(BaseGeometry):
     """Represent a rectangle using BaseGeometry."""
 
@@ -23,5 +24,6 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         """Return the print() and str() representation of a Rectangle."""
-        x = "[{}] {}/{}".format(self.__class__.__name__, self.__width, self.__height)
+        x = "[{}]".format(self.__class__.__name__) + \
+                "{}/{}".format(self.__width, self.__height)
         return x
