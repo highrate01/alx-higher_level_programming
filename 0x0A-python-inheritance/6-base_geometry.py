@@ -6,6 +6,6 @@ class BaseGeometry:
     "Represent improved base geometry."""
 
     def area(self):
-    """Not implemented."""
+        """Not implemented."""
 
-    raise Exception("Area is not implemented")
+        raise Exception("Area is not implemented")
