@@ -4,13 +4,13 @@ how to use 1-my_list.py
 
 This module defines a class of ''My list'' that inherit from my ''list''
 
-istantiation
+Instantiation
 ============
 
 ''MyList'' can be instantiated with no argument which will return with an empty list.
 
 ::
-	>>> MyLiist = __import__('1-my_list').MyList
+	>>> MyList = __import__('1-my_list').MyList
 	>>> my_list = MyList()
 	>>> type(my_list)
 	<class '1-my_list.MyList'>
@@ -30,7 +30,7 @@ or a single argument which must be an iterable object.
 
 ::
 
-	>>> my_list = MyList[None]
+	>>> my_list = MyList(None)
 	Traceback (most recent call last):
 	TypeError: 'NoneType' object is not iterable
 
