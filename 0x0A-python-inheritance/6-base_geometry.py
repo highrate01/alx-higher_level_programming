@@ -1,8 +1,11 @@
 #!/usr/bin/pytho3
-"""Defines base geometery class BaseGeometery."""
+"""Defines base geometry class BaseGeometery."""
 
 
-class BaseGeometery:
+class BaseGeometry:
+    "Represent improved base geometry."""
+
+    def area(self):
     """Not implemented."""
 
     raise Exception("Area is not implemented")
