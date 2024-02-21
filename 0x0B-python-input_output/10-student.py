@@ -27,4 +27,4 @@ class Student:
                 all(type(element) == str for element in attrs)):
             return {k: getattr(self, k) for k in attrs if
                     hasattr(self, k)}
-            return self.__dict__
+        return self.__dict__
