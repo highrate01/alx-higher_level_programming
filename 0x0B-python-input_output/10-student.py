@@ -23,8 +23,8 @@ class Student:
         Args:
             attrs (list): (Optional) The attributes to represent
         """
-        if (type(attrs) == list and
-                all(type(element) == str for element in attrs)):
+        if (type(attrs) is list and
+                all(type(element) is str for element in attrs)):
             return {k: getattr(self, k) for k in attrs if
                     hasattr(self, k)}
         return self.__dict__
