@@ -6,7 +6,7 @@ from 7-save_to_json_file import save_to_json_file
 from 8-load_from_json_file import load_from_json_file
 
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     try:
         items = load_from_json_file("add_item.json")
     except FileNotFoundError:
