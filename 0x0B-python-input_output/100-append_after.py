@@ -14,7 +14,7 @@ def append_after(filename="", search_string="", new_string=""):
         for line in r:
             text += line
             if search_string in line:
-                text += new_string + '\n'
+                pass
 
     with open(filename, "w") as w:
         w.write(text)
