@@ -69,7 +69,7 @@ class Rectangle(Base):
     def y(self, value):
         """y setter"""
         if not isinstance(value, int):
-            raise TypeError("x must be an integer")
+            raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
@@ -93,10 +93,10 @@ class Rectangle(Base):
         returns [Rectangle] (<id>) <x>/<y> - <width>/<height>
         """
         return "[rectangle] ({})  {}/{} - {}/{}".format(self.id,
-                self.x,
-                self.y,
-                self.width,
-                self.height)
+                                                        self.x,
+                                                        self.y,
+                                                        self.width,
+                                                        self.height)
 
     def update(self, *args, **kwargs):
         """

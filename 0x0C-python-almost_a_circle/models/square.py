@@ -5,7 +5,6 @@ Defines Square that inherits from Rectangle
 from models.rectangle import Rectangle
 
 
-
 class Square(Rectangle):
     """
     The inherit class
@@ -30,10 +29,12 @@ class Square(Rectangle):
         """
         Represents str
         """
-        return "[square] ({}) {}/{} - {}".format(self.id,
+        return "[square] ({}) {}/{} - {}".format(
+                self.id,
                 self.x,
                 self.y,
-                self.width)
+                self.width
+            )
 
     def update(self, *args, **kwargs):
         """
@@ -76,5 +77,5 @@ class Square(Rectangle):
                 "size": self.width,
                 "x": self.x,
                 "y": self.y
-                }
+            }
         return square_dict
