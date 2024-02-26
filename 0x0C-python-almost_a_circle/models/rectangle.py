@@ -94,21 +94,36 @@ class Rectangle(Base):
                 self.width,
                 self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         Assigns keys or values to attributes
         base on thier position
         """
-        for i, attr in enumerate(args):
-            if i == 0:
-                self.id = attr
-            elif i == 1:
-                self.width = attr
-            elif i == 2:
-                self.height = attr
-            elif i == 3:
-                self.x = attr
-            elif i == 4:
-                self.y = attr
-            else:
-                continue
+        if args:
+            for i, attr in enumerate(args):
+                if i == 0:
+                    self.id = attr
+                elif i == 1:
+                    self.width = attr
+                elif i == 2:
+                    self.height = attr
+                elif i == 3:
+                    self.x = attr
+                elif i == 4:
+                    self.y = attr
+                else:
+                    continue
+        elif len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
+                else:
+                    break
