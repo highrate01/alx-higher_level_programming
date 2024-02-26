@@ -93,3 +93,22 @@ class Rectangle(Base):
                 self.y,
                 self.width,
                 self.height)
+
+    def update(self, *args):
+        """
+        Assigns keys or values to attributes
+        base on thier position
+        """
+        for i, attr in enumerate(args):
+            if i == 0:
+                self.id = attr
+            elif i == 1:
+                self.width = attr
+            elif i == 2:
+                self.height = attr
+            elif i == 3:
+                self.x = attr
+            elif i == 4:
+                self.y = attr
+            else:
+                continue
