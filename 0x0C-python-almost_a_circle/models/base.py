@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a base model class"""
 import json
+import csv
 
 
 class Base:
@@ -79,5 +80,54 @@ class Base:
                 for i in dict_list:
                     _list.append(cls.create(**i))
                 return _list
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Updats the class by serializes in CSV
+        """
+        if list_objs is None or len(list_objs) == 0:
+            return
+        if cls.__name__ == "Rectangle":
+            dict_names = ["id", "width", "height", "x", "y"]
+        else:
+            dict_names = ["id", "size", "x", "y"]
+
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w") as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=dict_names)
+            writer.writeheader()
+
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Updats the class by deserializes in CSV
+        """
+        filename = "{}.csv".format(cls.__name__)
+        try:
+            with open(filename, "r") as csv_file:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                dict_list = csv.DictReader(csv_file, fieldnames=fieldnames)
+
+                objs_list = []
+
+                for row in dict_list:
+                    converted_dict = {}
+                    for key, value in row.items():
+                        if value.isdigit():
+                            converted_dict[key] = int(value)
+                        else:
+                            converted_dict[key] = value
+
+                    objs_list.append(cls.create(**converted_dict))
+            return objs_list
         except FileNotFoundError:
             return []
