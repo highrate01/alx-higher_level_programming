@@ -64,3 +64,17 @@ class Square(Rectangle):
                     self.y = value
                 else:
                     break
+
+    def to_dictionary(self):
+        """
+        It adds the public method that returns that
+        returns the dictionary representation of a
+        square
+        """
+        square_dict = {
+                "id": self.id,
+                "size": self.width,
+                "x": self.x,
+                "y": self.y
+                }
+        return square_dict
