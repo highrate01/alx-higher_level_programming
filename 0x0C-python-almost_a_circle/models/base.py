@@ -16,7 +16,7 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """
-        It adding the static method that returns
+        It adds the static method that returns
         the JSON string representation of
         list_dictionaries
         """
@@ -24,3 +24,19 @@ class Base:
             return "[]"
         to_json = json.dumps(list_dictionaries)
         return to_json
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+        It adds the class method that writes the JSON string
+        representation of list_objs to a file
+        """
+        n_file = "{}.json".format(cls.__name__)
+        with open(n_file, "w") as jsonfile:
+            if list_objs is None:
+                jsonfile.write("{}")
+            else:
+                dict_list = []
+                for obj in list_objs:
+                    dict_list.append(obj.to_dictionary())
+                jsonfile.write(Base.to_json_string(dict_list))
