@@ -34,3 +34,33 @@ class Square(Rectangle):
                 self.x,
                 self.y,
                 self.width)
+
+    def update(self, *args, **kwargs):
+        """
+        It adds the punlic method that assign attributes
+        """
+        if args:
+            for i, attr in enumerate(args):
+                if i == 0:
+                    self.id = attr
+                elif i == 1:
+                    self.size = attr
+                elif i == 2:
+                    self.x = attr
+                elif i == 3:
+                    self.y = attr
+                else:
+                    break
+        elif len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "size":
+                    self.width = value
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
+                else:
+                    break
