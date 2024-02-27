@@ -7,6 +7,7 @@ import csv
 class Base:
     """Represents the base model"""
     __nb_objects = 0
+
     def __init__(self, id=None):
         if id is not None:
             self.id = id
@@ -68,7 +69,7 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """
-        It adds that class method 
+        It adds that class method
         that returns a list of instances:
         """
         n_file = "{}.json".format(cls.__name__)
