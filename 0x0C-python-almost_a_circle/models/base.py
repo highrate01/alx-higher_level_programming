@@ -89,46 +89,47 @@ class Base:
         """
         Updats the class by serializes in CSV
         """
-        if list_objs is None or len(list_objs) == 0:
-            return
-        if cls.__name__ == "Rectangle":
-            dict_names = ["id", "width", "height", "x", "y"]
-        else:
-            dict_names = ["id", "size", "x", "y"]
-
-        filename = cls.__name__ + ".csv"
-        with open(filename, "w") as csv_file:
-            writer = csv.DictWriter(csv_file, fieldnames=dict_names)
-            writer.writeheader()
-
+        filename = "{}.json".format(cls.__name__)
+        with open(filename, "w") as csvfile:
+            if list_objs is None or list_objs is []:
+                csvfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             for obj in list_objs:
                 writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
         """
-        Updats the class by deserializes in CSV
+        update class by deserilizes in csv
         """
-        filename = "{}.csv".format(cls.__name__)
+        filename = "{}.json".format(cls.__name__)
+
         try:
-            with open(filename, "r") as csv_file:
+            with open(filename, "r") as csvfile:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                dict_list = csv.DictReader(csv_file, fieldnames=fieldnames)
+                dict_list = csv.DictReader(csvfile, fieldnames=fieldnames)
 
-                objs_list = []
+                new_dict = []
+                converted_dict = {}
 
                 for row in dict_list:
-                    converted_dict = {}
                     for key, value in row.items():
-                        if value.isdigit():
-                            converted_dict[key] = int(value)
-                        else:
-                            converted_dict[key] = value
+                        converted_dict[key] = int(value)
+                    new_dict.append(converted_dict)
 
-                    objs_list.append(cls.create(**converted_dict))
-            return objs_list
+                dict_list = new_dict
+                instance_list = []
+                for row in dict_list:
+                    instance_list.append(cls.create(**row))
+
+                return instance_list
         except FileNotFoundError:
             return []
