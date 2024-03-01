@@ -8,20 +8,21 @@ from models.square import Square
 class Test_instantiation_base(self):
     """Test for instatiation of the base"""
 
-    def test_arg(self):
+    def test_no_arg(self):
         """Test for no argument"""
         b1 = Base()
         b2 = Base()
-        self.assertEqual(b1.id, b2.id - 1)
+        self.assertEqual(b1.id + 1, b2.id)
 
     def test_bases(self):
         """Test for three bases"""
         b1 = Base()
         b2 = Base()
-        self.assertEqual(b1.id, b3.id - 2)
+        b3 = Base()
+        self.assertEqual(b1.id + 2, b3.id)
 
     def test_None(self):
-        """Test for no id"""
+        """Test for none id"""
         b1 = Base(None)
         b2 = Base(None)
         self.assertEqual(b1.id, b2.id - 1)
