@@ -7,7 +7,11 @@ import sys
 import MySQLdb
 
 
-def search_state(username, password, database, stateName):
+if __name__ == '__main__':
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+    stateName = sys.argv[4]
     try:
         db = MySQLdb.connect(
                 host='localhost', port=3306,
@@ -31,12 +35,3 @@ def search_state(username, password, database, stateName):
             cursor.close()
         if 'db' in locals() and db:
             db.close()
-
-
-if __name__ == '__main__':
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    stateName = sys.argv[4]
-
-    search_state(username, password, database, stateName)
