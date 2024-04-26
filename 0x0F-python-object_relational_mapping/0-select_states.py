@@ -6,30 +6,21 @@ import MySQLdb
 
 def list_states(username, password, database):
 
-    try:
-        db = MySQLdb.connect(
-                host='localhost',
-                port=3306, user=username,
-                passwd=password, db=database
-                )
+    db = MySQLdb.connect(
+            host='localhost',
+            port=3306, user=username,
+            passwd=password, db=database)
 
-        cursor = db.cursor()
-        query = "SELECT * FROM states ORDER BY id ASC"
-        cursor.execute(query)
+    cursor = db.cursor()
+    query = "SELECT * FROM states ORDER BY id ASC"
+    cursor.execute(query)
 
-        rows = cursor.fetchall()
+    rows = cursor.fetchall()
 
-        for row in rows:
-            print(row)
+    for row in rows:
+        print(row)
 
-    except MySQLdb.Error as e:
-        print(f"Error accessing database: {e}")
-
-    finally:
-        if 'cursor' in locals() and cursor:
-            cursor.close()
-        if 'db' in locals() and db:
-            db.close()
+    db.close()
 
 
 if __name__ == '__main__':
