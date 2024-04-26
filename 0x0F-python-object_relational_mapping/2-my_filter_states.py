@@ -14,10 +14,10 @@ if __name__ == '__main__':
     stateName = sys.argv[4]
     try:
         db = MySQLdb.connect(
-                host='localhost', port=3306,
-                user=username, passwd=password,
-                db=database
-                )
+                            host='localhost', port=3306,
+                            user=username, passwd=password,
+                            db=database, charset="utf8"
+                            )
         cursor = db.cursor()
         query = "SELECT * FROM states " \
                 "WHERE name='{}' ORDER BY id ASC".format(stateName)
