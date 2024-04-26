@@ -3,15 +3,15 @@
 takes in an argument and displays all values in the states
 table of hbtn_0e_0_usa where name matches the argument
 """
-import sys
+from sys import argv
 import MySQLdb
 
 
 if __name__ == '__main__':
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    stateName = sys.argv[4]
+    username = argv[1]
+    password = argv[2]
+    database = argv[3]
+    stateName = argv[4]
     try:
         db = MySQLdb.connect(
                             host='localhost', port=3306,
@@ -19,8 +19,11 @@ if __name__ == '__main__':
                             db=database, charset="utf8"
                             )
         cursor = db.cursor()
-        query = "SELECT * FROM states " \
-                "WHERE name='{}' ORDER BY id ASC".format(stateName)
+
+        query = """
+        SELECT * FROM states WHERE name LIKE BINARY '{}'
+        ORDER BY states.id ASC"""
+        query = query.format(stateName)
 
         cursor.execute(query)
 
