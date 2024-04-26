@@ -5,8 +5,13 @@ import MySQLdb
 
 def list_states(username, password, database):
     """
-    list all states from the database
-    hbtn_0e_0_usa
+    list all states from the database hbtn_0e_0_usai.
+    Args:
+        username (str): MySQL username.
+        password (str): MySQL password.
+        database (str): Database name.
+    Returns:
+        None.
     """
 
     db = MySQLdb.connect(
