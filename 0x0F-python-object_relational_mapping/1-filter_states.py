@@ -7,31 +7,23 @@ import sys
 import MySQLdb
 
 
-def list_Nstates(username, password, database):
-    db = MySQLdb.connect(
-            host='localhost', port=3306,
-            user=username, passwd=password,
-            db=database
-            )
-    cursor = db.cursor()
-    try:
-        query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
-        cursor.execute(query)
-
-        states = cursor.fetchall()
-        for state in states:
-            print(state)
-    except MySQLdb.Error as e:
-        print(f"Error: {e}")
-
-    finally:
-        cursor.close()
-        db.close()
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
-    list_Nstates(username, password, database)
+    db = MySQLdb.connect(
+            host='localhost', port=3306,
+            user=username, passwd=password,
+            db=database, charset="utf8"
+            )
+    cursor = db.cursor()
+    query = "SELECT * FROM states ORDER BY id ASC"
+    cursor.execute(query)
+
+    states = cursor.fetchall()
+    for state in states:
+        if state[1].startswith("N"):
+            print(state)
+    cursor.close()
+    db.close()
