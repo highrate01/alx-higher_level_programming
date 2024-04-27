@@ -3,7 +3,7 @@
 lists all State objects that contain the letter
 a from the database
 """
-from sys argv
+from sys import argv
 from sqlalchemy import (create_engine)
 from sqlalchemy  import sessionmaker
 from model_state import Base, State
@@ -19,11 +19,11 @@ if __name__ == '__main__':
                 username, password, database), pool_ping=True
             )
     Base.metadata.create_all(engine)
-    Session = sessionmaker(binf=engine)
+    Session = sessionmaker(bing=engine)
     session = Session()
 
     for state in session.query(State).filter(
-            state.name.like('%a%')).order_by(state.id).all():
+            State.name.like('%a%')).order_by(state.id).all():
         print("{}: {}".format(state.id, state.name))
 
     session.close()
