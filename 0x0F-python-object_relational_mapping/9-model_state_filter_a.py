@@ -5,7 +5,7 @@ a from the database
 """
 from sys import argv
 from sqlalchemy import (create_engine)
-from sqlalchemy  import sessionmaker
+from sqlalchemy import sessionmaker
 from model_state import Base, State
 
 
@@ -19,7 +19,7 @@ if __name__ == '__main__':
                 username, password, database), pool_ping=True
             )
     Base.metadata.create_all(engine)
-    Session = sessionmaker(bing=engine)
+    Session = sessionmaker(bind=engine)
     session = Session()
 
     for state in session.query(State).filter(
