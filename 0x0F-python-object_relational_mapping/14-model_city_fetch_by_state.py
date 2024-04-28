@@ -21,7 +21,7 @@ if __name__ == "__main__":
             City.state_id == State.id).all()
 
     for city, state in cities:
-        print("{}: ({}) {}".format(stae.name, city.id,
+        print("{}: ({}) {}".format(state.name, city.id,
               city.name))
 
     session.commit()
