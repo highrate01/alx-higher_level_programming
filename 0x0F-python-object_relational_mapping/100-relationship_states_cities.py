@@ -4,8 +4,8 @@ creates the State “California” with the City “San
 Francisco” from the database hbtn_0e_100_usa
 """
 from sqlalchemy.orm import sessionmaker
-from relationship_state import Base, State
-from relationship_city import City
+from relationship_state import State
+from relationship_city import City, Base
 from sqlalchemy import create_engine
 from sys import argv
 
@@ -24,4 +24,3 @@ if __name__ == "__main__":
     newCity = City(name="San Francisco", state_id=newState.id)
     session.add(newCity)
     session.commit()
-    session.close()

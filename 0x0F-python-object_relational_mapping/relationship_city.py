@@ -3,7 +3,9 @@
 contains the call definition of City
 """
 from sqlalchemy import Column, Integer, String, ForeignKey
-from relationship_state import Base
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
 class City(Base):
@@ -11,7 +13,7 @@ class City(Base):
     Defines class representing the table
     """
 
-    __tablename__ = 'cities'
+    __tablename__ = "cities"
 
     id = Column(
                 Integer, primary_key=True,
