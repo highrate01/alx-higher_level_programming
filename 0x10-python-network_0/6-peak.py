@@ -3,6 +3,7 @@
 find peak in the list of int
 """
 
+
 def find_peak(list_of_integers):
     """
     finds a peak int the list of unsorted integers
