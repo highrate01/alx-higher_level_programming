@@ -2,6 +2,7 @@
 """
 python script that fetches https://alx-intranet.hbtn.io/status
 """
+
 import urllib.request
 
 
@@ -13,5 +14,5 @@ if __name__ == "__main__":
         print("Body response:")
         print("\t- type: {}".format(type(msg)))
         print("\t- content: {}".format(msg))
-        print("\t- utf88888888 content: {}".format(msg.decode(
+        print("\t- utf8 content: {}".format(msg.decode(
             "utf-8")))
