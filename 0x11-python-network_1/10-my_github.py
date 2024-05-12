@@ -5,13 +5,11 @@ password) and uses the GitHub API to display your id
 """
 from sys import argv
 import requests
+from requests.auth import HTTPBasicAuth
 
 
 if __name__ == "__main_":
-    url = "https://swapi.co/api/people"
+    auth = HTTPBasicAuth(argv[1], argv[2])
 
-    params = {"search": argv[1]}
-    results = requests.get(url, params=params).json()
-
-    print("Number of results: {}".format(results.get("count")))
-    [print(i.get("name")) for i in results.get("results")]
+    res = requests.get("https://api.github.com/user", auth=auth)
+    print(res.json().get("id"))
