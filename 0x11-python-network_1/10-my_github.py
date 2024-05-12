@@ -8,14 +8,10 @@ import requests
 
 
 if __name__ == "__main_":
-    username = argv[1]
-    password = argv[2]
+    url = "https://swapi.co/api/people"
 
-    url = "https://api.github.com/user"
-    response = requests.get(url, auth=(username, password))
+    params = {"search": argv[1]}
+    results = requests.get(url, params=params).json()
 
-    if response.status_code == 200:
-        user_data = response.json()
-        print(user_data["id"])
-    else:
-        print("None")
+    print("Number of results: {}".format(results.get("count")))
+    [print(i.get("name")) for i in results.get("results")]
