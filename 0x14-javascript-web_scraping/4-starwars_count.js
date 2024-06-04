@@ -1,11 +1,13 @@
 #!/usr/bin/node
+
 const request = require('request');
-const url = process.argv[2];
-request(url, function (error, response, body) {
-  if (!error) {
-    const results = JSON.parse(body).results;
-    console.log(results.reduce((count, movie) => {
-      return movie.characters.find(character => character.endsWith('/10/')) ? count + 1 : count;
-    }, 0));
+
+const apiUrl = process.argv[2];
+
+request(apiUrl, function (error, response, body) {
+  if (!error && response.statusCode === 200) {
+    const films = JSON.parse(body).results;
+    const wedgeAntillesMovies = films.filter(film => film.characters.includes('https://swapi-api.alx-tools.com/api/people/18/'));
+    console.log(`${wedgeAntillesMovies.length}`);
   }
 });
