@@ -5,9 +5,9 @@ const request = require('request');
 const apiUrl = process.argv[2];
 
 request(apiUrl, function (error, response, body) {
-  if (!error && response.statusCode === 200) {
+  if (!error) {
     const films = JSON.parse(body).results;
-    const wedgeAntillesMovies = films.filter(film => film.characters.includes('https://swapi-api.alx-tools.com/api/people/18/'));
-    console.log(`${wedgeAntillesMovies.length}`);
+    const antilles = films.filter(film => film.characters.includes('https://swapi-api.alx-tools.com/api/people/18/'));
+    console.log(`${antilles.length}`);
   }
 });
